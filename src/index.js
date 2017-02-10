@@ -12,6 +12,21 @@ module.exports = React.createClass({
       self.player = this
       self.player.on('play', self.handlePlay);
     });
+
+    //LOAD VideoJS markers 
+    player.markers({
+      onMarkerReached: function(marker, index) {
+                marker.destination = 'chat';
+                console.log(marker);
+      },
+      markers: [
+         {time: 1.5, text: "this"},
+         {time: 3,  text: "is"},
+         {time: 4.6,text: "so"},
+         {time: 6,  text: "cool"}
+      ]
+    });
+      
     if(this.props.onPlayerInit) this.props.onPlayerInit(player);
   },
 
